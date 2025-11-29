@@ -7,6 +7,7 @@ from PIL import Image
 
 from kitti_object import *
 def visualization():
+    os.makedirs("save_output", exist_ok=True)
     dataset = kitti_object('./kitti')   # linux 路径
     data_idx = 10               # 选择第几张图像
     # 1-加载标签数据
@@ -36,7 +37,7 @@ def visualization():
     show_lidar_on_image(pc_velo, img, calib, img_width, img_height)
     # 9-画BEV图
     print('------------------ BEV of LiDAR points -----------------------------')
-    show_lidar_topview(pc_velo, objects, calib)
+    show_lidar_topview(pc_velo)
      # 10-在BEV图中画2D框
     print('--------------- BEV of LiDAR points with bobes ---------------------')
     img1 = cv2.imread('save_output/BEV.png')     
